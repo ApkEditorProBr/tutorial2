@@ -43,6 +43,24 @@ function toggleAccordionTheme() {
     });
 }
 
+function searchItems() {
+  var searchInput = document.getElementById('searchInput');
+  var filter = searchInput.value.toUpperCase();
+  var itemsList = document.getElementById('itemsList');
+  var items = itemsList.getElementsByTagName('li');
+
+  for (var i = 0; i < items.length; i++) {
+var item = items[i];
+var itemName = item.textContent || item.innerText;
+
+if (itemName.toUpperCase().indexOf(filter) > -1) {
+  item.style.display = '';
+} else {
+  item.style.display = 'none';
+    }
+  }
+}
+
 function toggleAccordionButtonTheme() {
     var accordionButtons = document.querySelectorAll('.accordion-button');
     accordionButtons.forEach(function(element) {
@@ -50,13 +68,18 @@ function toggleAccordionButtonTheme() {
     });
 }
 
-btnContatos.addEventListener('click', function() {
-    if (DrawerAba.style.display === 'none') {
-        DrawerAba.style.display = 'block';
-    } else {
-        DrawerAba.style.display = 'none';
-    }
+var openButton = document.getElementById('open-drawer');
+        var closeButton = document.getElementById('close-drawer');
+        var drawerContainer = document.getElementById('drawer');
+
+        openButton.addEventListener('click', () => {
+            drawerContainer.classList.add('open');
+        });
+
+        closeButton.addEventListener('click', () => {
+            drawerContainer.classList.remove('open');
 });
+
 var acc = document.getElementsByClassName("accordion");
 var i;
 
