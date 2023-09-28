@@ -5,6 +5,58 @@ body {
   width: none;
 }
 
+#drawer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 70%;
+  height: 100vh;
+  background-color: #F2F2F2;
+  transition: transform 1s;
+  transition: left 0.9s;
+}
+
+#drawer.closed {
+    left: -720px;
+}
+
+#drawer.open {
+  right: 20px;
+  color: white;
+  font-size: 24px;
+  left: 0;
+}
+
+header {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.0);
+  height: 35px;
+}
+
+.abrir {
+  position: absolute;
+  border: none;
+  border-radius: 20%;
+  box-shadow: 0 0 4px #666;
+  font-size: 15px;
+  width: 34px;
+  height: 33px;
+}
+
+.btnSair {
+  font-size: 18px;
+  color: white;
+  position: absolute;
+  right: 0%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.0);
+}
+
+img {
+  width: 100%;
+  height: none;
+}
+
 /* Estilos para tag */
 i {
   font-style: normal;
@@ -33,7 +85,7 @@ i {
 }
 
 /* Estilos para o botão de contatos */
-#btnContatos {
+#open-drawer {
   width: 35px;
   height: 34px;
   font-size: 18px;
@@ -90,6 +142,19 @@ i {
   background-color: rgba(0, 0, 0, 0.0);
 }
 
+.dark .btnSair {
+  font-family: serif;
+  font-size: 20px;
+  position: absolute;
+  right: 0%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.0);
+}
+
+.dark .lista {
+	color: #C6C2C6;
+}
+
 /*Classe mlink estilo dark */
 .dark .mlink {
 	font-size: 17px;
@@ -97,8 +162,15 @@ i {
 	color: #C25;
 }
 
-/* Estilos para o botão de contatos no tema escuro */
-.dark #btnContatos {
+.dark #drawer {
+  background-color: #F2F2F2;
+}
+
+.dark #drawer.closed {
+  background-color: #29272C;
+}
+
+.dark #drawer.open {
   background-color: #29272C;
   color: #C6C2C6;
   font-size: 24px;
@@ -136,17 +208,11 @@ i {
   color: #C6C2C6;
 }
 
-/* Classe dark #btnContatos - estilo para o botão de contatos do tema escuro */
-.dark #btnContatos {
-  background-color: rgba(0, 0, 0, 0.0);
+.dark #open-drawer {
+  background-color: #29272C;
   color: #C6C2C6;
+  font-size: 24px;
   font-family: serif;
-  height: 35px;
-  padding: 2px;
-  position: none;
-  right: none;
-  top: none;
-  width: 36px;
 }
 
 /* Classe dark .fonte - estilo para a opção de alterar a fonte no tema escuro */
@@ -267,9 +333,6 @@ i {
   width: 25px;
   background-color: rgba(0, 0, 0, 0.0);
 }
-.title {
-  text-align: center;
-}
 
 /* Classe h2 - estilo para o cabeçalho h2 */
 h2 {
@@ -301,10 +364,6 @@ h2 {
 .img-5 {
   padding: 0px 0px;
   width: 5%;
-}
-
-/* Classe p - estilo para parágrafos */
-p {
 }
 
 /* Classe panel - estilo para o painel */
@@ -423,12 +482,10 @@ header {
   font-size: 15px;
 }
 
-/* Classe dark .theme-icon::before - estilo para o ícone do tema escuro antes do conteúdo */
 .dark .theme-icon::before {
   content: url("light.webp");
 }
 
-/* Classe para definir as propriedades do dropdown quando está oculto */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -441,13 +498,9 @@ header {
   z-index: 1;
 }
 
-/* Classe para definir as propriedades do dropdown quando está visível */
 .dropdown:hover .dropdown-content {
   display: block;
   transition: transform 1s;
-}
-
-.fundo {
 }
 
 .btnSair {
@@ -464,46 +517,39 @@ img {
   height: none;
 }
 
-.conteudo {
-  font-size: 20px;
-  color: black;
+.search-bar {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 30px;
 }
 
-.dark .conteudo {
-  font-family: serif;
-  font-size: 20px;
-  color: #C6C2C6;
-}
-
-/* Identificador para ocultar o conteúdo dentro desta div */
-#DrawerAba {
-  display: none;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 70%;
-  height: 100vh;
-  background-color: #F2F2F2;
-  transition: transform 1s;
-}
-
-.dark #DrawerAba {
-  display: none;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 70%;
-  height: 100vh;
-  background-color: #29272C;
-  transition: transform 1s;
-}
-
-.dark .btnSair {
-  font-family: serif;
-  font-size: 20px;
-  color: #C6C2C6;
-  position: absolute;
-  right: 0%;
+.search-input {
+  width: 100%;
+  height: 34px;
+  background-color: none;
+  outline: none;
   border: none;
-  background-color: rgba(0, 0, 0, 0.0);
+  border-radius: 1%;
+  box-shadow: 0 0 4px #666;
+  color: none;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: url(lupaicon_r0.png) no-repeat center;
+  background-size: 100%;
+  cursor: none;
+}
+
+#itemsList {
+  font-size: 12px;
+  color: black;
+  margin-left: 40px;
+  }
 }
