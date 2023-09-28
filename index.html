@@ -1,16 +1,18 @@
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+
     <!-- Meu css -->
     <link rel="stylesheet" href="estilo.css">
 </head>
-<body>
     <header>
         <nav>
-            <div class="navbar">
-                <button id="btnContatos">&equiv;</button>
+            <div>
+                <button id="open-drawer">&equiv;</button>
                 <i class="theme-icon" onclick="toggleTheme()"></i>
                 <div class="dropdown">
                     <button class="dropbtn" onclick="toggleDropdown()"></button>
@@ -35,20 +37,787 @@
             </div>
         </nav>
       </header>
-    <div id="DrawerAba">
-       <div class="fundo">
+    
+    <div id="drawer" class="closed">
+    	<div class="fundo">
     	<img src="logo.jpg"></img>
-        <button class="btnSair" id="close-drawer" onclick="closeDrawer()">×</button>
+        <button class="btnSair" id="close-drawer">×</button>
+        
         </div>
-        <ul class="conteudo">
-        Ainda não está completo!
-        </ul>
-    </div>
+        <div class="search-bar">
+  <input type="text" class="search-input" id="searchInput" placeholder="Digite para localizar" value="const">
+  <span class="search-icon" onclick="searchItems()"></span>
+  </div>
+<br>
+</br>
+
+<ul id="itemsList">
+<ol>
+<li class="lista" style="display: none;">
+<a href="optcode.html#goto">goto</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#return-void">return-void</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#nop">nop</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#const/4">const/4</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#move-result">move-result</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#move-result-wide">move-result-wide</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#move-result-object">move-result-object</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#move-exception">move-exception</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#return">return</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#return-wide">return-wide</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#return-object">return-object</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#monitor-enter">monitor-enter</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#monitor-exit">monitor-exit</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#throw">throw</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#move">move</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#move-wide">move-wide</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#move-object">move-object</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#array-length">array-length</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#neg-int">neg-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#not-int">not-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#neg-long">neg-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#not-long">not-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#neg-float">neg-float</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#neg-double">neg-double</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#int-to-long">int-to-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#int-to-float">int-to-float</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#int-to-double">int-to-double</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#long-to-int">long-to-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#long-to-float">long-to-float</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#long-to-double">long-to-double</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#float-to-int">float-to-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#float-to-long">float-to-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#float-to-double">float-to-double</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#double-to-int">double-to-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#double-to-long">double-to-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#double-to-float">double-to-float</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#int-to-byte">int-to-byte</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#int-to-char">int-to-char</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#int-to-short">int-to-short</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#add-int/2addr">add-int/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sub-int/2addr">sub-int/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#mul-int/2addr">mul-int/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#div-int/2addr">div-int/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#rem-int/2addr">rem-int/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#and-int/2addr">and-int/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#or-int/2addr">or-int/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#xor-int/2addr">xor-int/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#shl-int/2addr">shl-int/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#shr-int/2addr">shr-int/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#ushr-int/2addr">ushr-int/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#add-long/2addr">add-long/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sub-long/2addr">sub-long/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#mul-long/2addr">mul-long/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#div-long/2addr">div-long/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#rem-long/2addr">rem-long/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#and-long/2addr">and-long/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#or-long/2addr">or-long/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#xor-long/2addr">xor-long/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#shl-long/2addr">shl-long/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#shr-long/2addr">shr-long/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#ushr-long/2addr">ushr-long/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#add-float/2addr">add-float/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sub-float/2addr">sub-float/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#mul-float/2addr">mul-float/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#div-float/2addr">div-float/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#rem-float/2addr">rem-float/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#add-double/2addr">add-double/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sub-double/2addr">sub-double/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#mul-double/2addr">mul-double/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#div-double/2addr">div-double/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#rem-double/2addr">rem-double/2addr</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#goto/16">goto/16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sget">sget</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sget-wide">sget-wide</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sget-object">sget-object</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sget-boolean">sget-boolean</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sget-byte">sget-byte</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sget-char">sget-char</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sget-short">sget-short</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sput">sput</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sput-wide">sput-wide</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sput-object">sput-object</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sput-boolean">sput-boolean</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sput-byte">sput-byte</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sput-char">sput-char</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sput-short">sput-short</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#const-string">const-string</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#check-cast">check-cast</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#new-instance">new-instance</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#const-class">const-class</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#const/high16">const/high16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#const-wide/high16">const-wide/high16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#const/16">const/16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#const-wide/16">const-wide/16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#if-eqz">if-eqz</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#if-nez">if-nez</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#if-ltz">if-ltz</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#if-gez">if-gez</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#if-gtz">if-gtz</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#if-lez">if-lez</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#add-int/lit8">add-int/lit8</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#rsub-int/lit8">rsub-int/lit8</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#mul-int/lit8">mul-int/lit8</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#div-int/lit8">div-int/lit8</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#rem-int/lit8">rem-int/lit8</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#and-int/lit8">and-int/lit8</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#or-int/lit8">or-int/lit8</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#xor-int/lit8">xor-int/lit8</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#shl-int/lit8">shl-int/lit8</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#shr-int/lit8">shr-int/lit8</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#ushr-int/lit8">ushr-int/lit8</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iget">iget</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iget-wide">iget-wide</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iget-object">iget-object</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iget-boolean">iget-boolean</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iget-byte">iget-byte</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iget-char">iget-char</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iget-short">iget-short</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iput">iput</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iput-wide">iput-wide</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iput-object">iput-object</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iput-boolean">iput-boolean</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iput-byte">iput-byte</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iput-char">iput-char</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iput-short">iput-short</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#instance-of">instance-of</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#new-array">new-array</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iget-quick">iget-quick</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iget-wide-quick">iget-wide-quick</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iget-object-quick">iget-object-quick</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iput-quick">iput-quick</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iput-wide-quick">iput-wide-quick</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#iput-object-quick">iput-object-quick</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#rsub-int">rsub-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#add-int/lit16">add-int/lit16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#mul-int/lit16">mul-int/lit16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#div-int/lit16">div-int/lit16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#rem-int/lit16">rem-int/lit16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#and-int/lit16">and-int/lit16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#or-int/lit16">or-int/lit16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#xor-int/lit16">xor-int/lit16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#if-eq">if-eq</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#if-ne">if-ne</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#if-lt">if-lt</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#if-ge">if-ge</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#if-gt">if-gt</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#if-le">if-le</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#move/from16">move/from16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#move-wide/from16">move-wide/from16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#move-object/from16">move-object/from16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#cmpl-float">cmpl-float</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#cmpg-float">cmpg-float</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#cmpl-double">cmpl-double</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#cmpg-double">cmpg-double</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#cmp-long">cmp-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#aget">aget</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#aget-wide">aget-wide</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#aget-object">aget-object</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#aget-boolean">aget-boolean</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#aget-byte">aget-byte</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#aget-char">aget-char</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#aget-short">aget-short</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#aput">aput</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#aput-wide">aput-wide</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#aput-object">aput-object</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#aput-boolean">aput-boolean</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#aput-byte">aput-byte</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#aput-char">aput-char</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#aput-short">aput-short</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#add-int">add-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sub-int">sub-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#mul-int">mul-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#div-int">div-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#rem-int">rem-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#and-int">and-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#or-int">or-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#xor-int">xor-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#shl-int">shl-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#shr-int">shr-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#ushr-int">ushr-int</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#add-long">add-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sub-long">sub-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#mul-long">mul-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#div-long">div-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#rem-long">rem-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#and-long">and-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#or-long">or-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#xor-long">xor-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#shl-long">shl-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#shr-long">shr-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#ushr-long">ushr-long</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#add-float">add-float</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sub-float">sub-float</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#mul-float">mul-float</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#div-float">div-float</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#rem-float">rem-float</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#add-double">add-double</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sub-double">sub-double</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#mul-double">mul-double</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#div-double">div-double</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#rem-double">rem-double</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#goto/32">goto/32</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#const-string/jumbo">const-string/jumbo</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#const">const</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#const-wide/32">const-wide/32</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#fill-array-data">fill-array-data</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#packed-switch">packed-switch</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#sparse-switch">sparse-switch</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#move/16">move/16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#move-wide/16">move-wide/16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#move-object/16">move-object/16</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#invoke-virtual">invoke-virtual</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#invoke-super">invoke-super</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#invoke-direct">invoke-direct</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#invoke-static">invoke-static</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#invoke-interface">invoke-interface</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#filled-new-array">filled-new-array</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#invoke-direct-empty">invoke-direct-empty</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#execute-inline">execute-inline</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#invoke-virtual-quick">invoke-virtual-quick</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#invoke-super-quick">invoke-super-quick</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#invoke-virtual/range">invoke-virtual/range</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#invoke-super/range">invoke-super/range</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#invoke-direct/range">invoke-direct/range</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#invoke-static/range">invoke-static/range</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#invoke-interface/range">invoke-interface/range</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#filled-new-array/range">filled-new-array/range</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#invoke-virtual-quick/range">invoke-virtual-quick/range</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#invoke-super-quick/range">invoke-super-quick/range</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="optcode.html#const-wide">const-wide</a>
+</li>
+</ol>
+</br>
+
+<ol>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.class">.class</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.super">.super</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.implements">.implements</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.field">.field</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.subannotation">.subannotation</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.annotation">.annotation</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.enum">.enum</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.method">.method</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.registers">.registers</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.locals">.locals</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.array-data">.array-data</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.packed-switch">.packed-switch</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.sparse-switch">.sparse-switch</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.catch">.catch</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.catchall">.catchall</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.parameter">.parameter</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.prologue">.prologue</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.epilogue">.epilogue</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.source">.source</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.end">.end</a>
+</li>
+<li class="lista" style="display: none;">
+<a href="diretivos.html#.restart">.restart</a>
+</li>
+</ol>
+</ul>
+</div>
     <br>
     </br>
     <h2>Apk Editor Pro Br</h2>
     
-</div><button class="accordion">PATCH</button>
+   <button class="accordion">PATCH</button>
 <div class="panel">
   <p>Um patch é um arquivo de correção projetado para corrigir problemas existentes ou adicionar novos recursos em aplicativos ou jogos. Geralmente, um patch é um arquivo de tamanho pequeno que substitui ou adiciona arquivos específicos em aplicativos ou jogos. Os patches são usados para resolver problemas, corrigir erros ou melhorar o desempenho de aplicativos ou jogos.<br>
 </br>
@@ -95,6 +864,24 @@ Aqui estão alguns que já existem:<br>
 <b translate="no">patch_script_example.zip</b>
 </br>
 &#8627;Este patch é um exemplo de "informações de depuração" é basicamente um exemplo.<br>
+</br>
+</p>
+</div>
+<br>
+</br>
+
+<button class="accordion">SOBRE DIRETIVO</button>
+<div class="panel">
+  <p>&#8883; Os diretivos servem para controlar e guiar o fluxo de execução de um programa em linguagem de programação interpretada. Eles são instruções escritas em um formato compacto e de baixo nível, que são executadas por uma máquina virtual específica para cada linguagem.<br>
+</br>
+
+&#8883; Esses diretivos podem incluir operações matemáticas, chamadas de funções, atribuições de valores a variáveis, estruturas de controle de fluxo (como condicionais e laços de repetição), manipulação de cadeias de caracteres e acesso a recursos de entrada/saída do sistema.<br>
+</br>
+
+&#8883; Ao serem executados pela máquina virtual, os diretivos são convertidos em instruções de mais baixo nível que são entendidas pelo processador do computador, permitindo a execução do programa de forma eficiente e portátil, independentemente do sistema operacional ou hardware utilizado.<br>
+</br>
+
+&#8883; Em resumo, os diretivos são uma representação intermediária do código fonte original do programa e são usados para executar as instruções escritas pelo programador em uma linguagem de alto nível.<br>
 </br>
 </p>
 </div>
@@ -1220,7 +2007,8 @@ Passo 4, substitua <u translate="no">visible</u> por <u translate="no">gone</u>:
 <br>
 </br>
 
-<!-- Meu js -->
+    <!-- Meu js -->
 <script src="script.js" deter></script>
+
 </body>
 </html>
