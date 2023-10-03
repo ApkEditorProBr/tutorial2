@@ -161,9 +161,9 @@ i {
 
 /*Classe mlink estilo dark */
 .dark .mlink {
-	font-size: 17px;
-	font-family: serif;
-	color: #C25;
+  font-size: 17px;
+  font-family: serif;
+  color: #C25;
 }
 
 .dark #drawer {
@@ -379,6 +379,7 @@ h2 {
   display: none;
   overflow: hidden;
   padding: 0 18px;
+  user-select: text;
 }
 
 /* Classe theme-icon - estilo para o ícone do tema */
