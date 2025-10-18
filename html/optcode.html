@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Instruções</title>
+</head>
+<body>
+<button class="btnBack" onclick="goBack()">Voltar</button>
+
+<style>
+table {
+ font-family: serif;
+ border-collapse: collapse;
+ width: none;
+ height: none;
+ }
+ 
+td {
+ box-shadow: 0 0 0px black;
+ border: 1px solid #ccc;
+ text-align: left;
+ padding: 5px;
+ background-color: none;
+ color: black;
+ font-size: none;
+ }
+
+th {
+ background-color: red;
+ color: white;
+ font-size: 18px;
+}
+.diretivos {
+ color: #A9461B;
+ font-size: 12px;
+}
+
+.btnBack {
+  position: fixed;
+  width: 50px;
+  height: 34px;
+  padding: none;
+  position: none;
+  top: none;
+  right: none;
+  color: #333;
+  cursor: none;
+  border: none;
+  border-radius: 20%;
+  box-shadow: 0 0 4px #666;
+  background-color: rgba(255, 0, 0, 0.2 );
+}
+
+</style>
+
+<table>
+<th>Código de operação</th>
+<th>Descrição</th>
+<tr>
+<td id="goto" translate="no">goto</td>
+<td>Desvia o fluxo de execução para um determinado ponto de destino no código</td>
+</tr>
+<tr>
+<td id="return-void" translate="no">return-void</td>
+<td>Retorna imediatamente de um método sem nenhum valor de retorno</td>
+</tr>
+<tr>
+<td id="nop" translate="no">nop</td>
+<td>Não faz nada e é usado para preenchimento de espaço vazio no código</td>
+</tr>
+<tr>
+<td id="const/4" translate="no">const/4</td>
+<td>Carrega um valor inteiro constante de 4 bits</td>
+</tr>
+<tr>
+<td id="move-result" translate="no">move-result</td>
+<td>Move o resultado de uma operação anterior para um registrador</td>
+</tr>
+<tr>
+<td id="move-result-wide" translate="no">move-result-wide</td>
+<td>Move a parte de maior ordem do resultado de uma operação anterior de inteiros longos para um registrador</td>
+</tr>
+<tr>
+<td id="move-result-object" translate="no">move-result-object</td>
+<td>Move o resultado de um objeto de uma operação anterior para um registrador</td>
+</tr>
+<tr>
+<td id="move-exception" translate="no">move-exception</td>
+<td>Move a exceção atual sendo tratada para um registrador</td>
+</tr>
+<tr>
+<td id="return" translate="no">return</td>
+<td>Retorna imediatamente de um método com um valor de retorno</td>
+</tr>
+<tr>
+<td id="return-wide" translate="no">return-wide</td>
+<td>Retorna imediatamente de um método com um valor de retorno de inteiro longo</td>
+</tr>
+<tr>
+<td id="return-object" translate="no">return-object</td>
+<td>Retorna imediatamente de um método com um valor de retorno de objeto</td>
+</tr>
+<tr>
+<td id="monitor-enter" translate="no">monitor-enter</td>
+<td>Adquire um bloqueio de monitor de objeto</td>
+</tr>
+<tr>
+<td id="monitor-exit" translate="no">monitor-exit</td>
+<td>Libera um bloqueio de monitor de objeto</td>
+</tr>
+<tr>
+<td id="throw" translate="no">throw</td>
+<td>Lança uma exceção</td>
+</tr>
+<tr>
+<td id="move" translate="no">move</td>
+<td>Move um valor de um registrador para outro</td>
+</tr>
+<tr>
+<td id="move-wide" translate="no">move-wide</td>
+<td>Move a parte de maior ordem de um valor de inteiro longo de um registrador para outro</td>
+</tr>
+<tr>
+<td id="move-object" translate="no">move-object</td>
+<td>Move um valor de objeto de um registrador para outro</td>
+</tr>
+<tr>
+<td id="array-length" translate="no">array-length</td>
+<td>Obtém o comprimento de uma matriz e armazena-o em um registrador</td>
+</tr>
+<tr>
+<td id="neg-int" translate="no">neg-int</td>
+<td>Inverte o sinal de um valor inteiro</td>
+</tr>
+<tr>
+<td id="not-int" translate="no">not-int</td>
+<td>Inverte todos os bits de um valor inteiro</td>
+</tr>
+<tr>
+<td id="neg-long" translate="no">neg-long</td>
+<td>Inverte o sinal de um valor inteiro longo</td>
+</tr>
+<tr>
+<td id="not-long" translate="no">not-long</td>
+<td>Inverte todos os bits de um valor inteiro longo</td>
+</tr>
+<tr>
+<td id="neg-float" translate="no">neg-float</td>
+<td>Inverte o sinal de um valor de ponto flutuante</td>
+</tr>
+<tr>
+<td id="neg-double" translate="no">neg-double</td>
+<td>Inverte o sinal de um valor de ponto flutuante de dupla precisão</td>
+</tr>
+<tr>
+<td id="int-to-long" translate="no">int-to-long</td>
+<td>Converte um valor inteiro para um valor inteiro longo</td>
+</tr>
+<tr>
+<td id="int-to-float" translate="no">int-to-float</td>
+<td>Converte um valor inteiro para um valor de ponto flutuante</td>
+</tr>
+<tr>
+<td id="int-to-double" translate="no">int-to-double</td>
+<td>Converte um valor inteiro para um valor de ponto flutuante de dupla precisão</td>
+</tr>
+<tr>
+<td id="long-to-int" translate="no">long-to-int</td>
+<td>Converte um valor inteiro longo para um valor inteiro</td>
+</tr>
+<tr>
+<td id="long-to-float" translate="no">long-to-float</td>
+<td>Converte um valor inteiro longo para um valor de ponto flutuante</td>
+</tr>
+<tr>
+<td id="long-to-double" translate="no">long-to-double</td>
+<td>Converte um valor inteiro longo para um valor de ponto flutuante de dupla precisão</td>
+</tr>
+<tr>
+<td id="float-to-int" translate="no">float-to-int</td>
+<td>Converte um valor de ponto flutuante para um valor inteiro</td>
+</tr>
+<tr>
+<td id="float-to-long" translate="no">float-to-long</td>
+<td>Converte um valor de ponto flutuante para um valor inteiro longo</td>
+</tr>
+<tr>
+<td id="float-to-double" translate="no">float-to-double</td>
+<td>Converte um valor de ponto flutuante para um valor de ponto flutuante de dupla precisão</td>
+</tr>
+<tr>
+<td id="double-to-int" translate="no">double-to-int</td>
+<td>Converte um valor de ponto flutuante de dupla precisão para um valor inteiro</td>
+</tr>
+<tr>
+<td id="double-to-long" translate="no">double-to-long</td>
+<td>Converte um valor de ponto flutuante de dupla precisão para um valor inteiro longo</td>
+</tr>
+<tr>
+<td id="double-to-float" translate="no">double-to-float</td>
+<td>Converte um valor de ponto flutuante de dupla precisão para um valor de ponto flutuante</td>
+</tr>
+<tr>
+<td id="int-to-byte" translate="no">int-to-byte</td>
+<td>Converte um valor inteiro para um valor de byte</td>
+</tr>
+<tr>
+<td id="int-to-char" translate="no">int-to-char</td>
+<td>Converte um valor inteiro para um valor de caractere</td>
+</tr>
+<tr>
+<td id="int-to-short" translate="no">int-to-short</td>
+<td>Converte um valor inteiro para um valor curto</td>
+</tr>
+<tr>
+<td id="add-int/2addr" translate="no">add-int/2addr</td>
+<td>Adiciona dois valores inteiros e armazena o resultado no registrador de destino</td>
+</tr>
+<tr>
+<td id="sub-int/2addr" translate="no">sub-int/2addr</td>
+<td>Subtrai dois valores inteiros e armazena o resultado no registrador de destino</td>
+</tr>
+<tr>
+<td id="mul-int/2addr" translate="no">mul-int/2addr</td>
+<td>Multiplica dois valores inteiros e armazena o resultado no registrador de destino</td>
+</tr>
+<tr>
+<td id="div-int/2addr" translate="no">div-int/2addr</td>
+<td>Divide dois valores inteiros e armazena o resultado no registrador de destino</td>
+</tr>
+<tr>
+<td id="rem-int/2addr" translate="no">rem-int/2addr</td>
+<td>Calcula o resto da divisão de dois valores inteiros e armazena o resultado no registrador de destino</td>
+</tr>
+<tr>
+<td id="and-int/2addr" translate="no">and-int/2addr</td>
+<td>Faz a operação lógica AND bit a bit em dois valores inteiros e armazena o resultado no registrador de destino</td>
+</tr>
+<tr>
+<td id="or-int/2addr" translate="no">or-int/2addr</td>
+<td>Faz a operação lógica OR bit a bit em dois valores inteiros e armazena o resultado no registrador de destino</td>
+</tr>
+<tr>
+<td id="xor-int/2addr" translate="no">xor-int/2addr</td>
+<td>Faz a operação lógica XOR bit a bit em dois valores inteiros e armazena o resultado no registrador de destino</td>
+</tr>
+<tr>
+<td id="shl-int/2addr" translate="no">shl-int/2addr</td>
+<td>Desloca à esquerda o valor inteiro em um número de bits específico e armazena o resultado no registrador de destino</td>
+</tr>
+<tr>
+<td id="shr-int/2addr" translate="no">shr-int/2addr</td>
+<td>Desloca à direita o valor inteiro em um número de bits específico e armazena o resultado no registrador de destino</td>
+</tr>
+<tr>
+<td id="ushr-int/2addr" translate="no">ushr-int/2addr</td>
+<td>Desloca à direita sem sinal o valor inteiro em um número de bits específico e armazena o resultado no registrador de destino</td>
+</tr>
+<tr>
+<td id="add-long/2addr" translate="no">add-long/2addr</td>
+<td>Adiciona dois valores longos e armazena o resultado no primeiro valor</td>
+</tr>
+<tr>
+<td id="sub-long/2addr" translate="no">sub-long/2addr</td>
+<td>Subtrai dois valores longos e armazena o resultado no primeiro valor</td>
+</tr>
+<tr>
+<td id="mul-long/2addr" translate="no">mul-long/2addr</td>
+<td>Multiplica dois valores longos e armazena o resultado no primeiro valor</td>
+</tr>
+<tr>
+<td id="div-long/2addr" translate="no">div-long/2addr</td>
+<td>Divide dois valores longos e armazena o resultado no primeiro valor</td>
+</tr>
+<tr>
+<td id="rem-long/2addr" translate="no">rem-long/2addr</td>
+<td>Calcula o resto da divisão de dois valores longos e armazena o resultado no primeiro valor</td>
+</tr>
+<tr>
+<td id="and-long/2addr" translate="no">and-long/2addr</td>
+<td>Aplica um operador AND lógico a dois valores longos e armazena o resultado no primeiro valor</td>
+</tr>
+<tr>
+<td id="or-long/2addr" translate="no">or-long/2addr</td>
+<td>Aplica um operador OR lógico a dois valores longos e armazena o resultado no primeiro valor</td>
+</tr>
+<tr>
+<td id="xor-long/2addr" translate="no">xor-long/2addr</td>
+<td>Aplica um operador XOR lógico a dois valores longos e armazena o resultado no primeiro valor</td>
+</tr>
+<tr>
+<td id="shl-long/2addr" translate="no">shl-long/2addr</td>
+<td>Executa um deslocamento lógico à esquerda em um valor longo e armazena o resultado no primeiro valor</td>
+</tr>
+<tr>
+<td id="shr-long/2addr" translate="no">shr-long/2addr</td>
+<td>Executa um deslocamento lógico à direita em um valor longo e armazena o resultado no primeiro valor</td>
+</tr>
+<tr>
+<td id="ushr-long/2addr" translate="no">ushr-long/2addr</td>
+<td>Executa um deslocamento lógico à direita sem sinal em um valor longo e armazena o resultado no primeiro valor</td>
+</tr>
+<tr>
+<td id="add-float/2addr" translate="no">add-float/2addr</td>
+<td>Adiciona dois valores de ponto flutuante e armazena o resultado no primeiro valor</td>
+</tr>
+<tr>
+<td id="sub-float/2addr" translate="no">sub-float/2addr</td>
+<td>Subtrai dois valores de ponto flutuante e armazena o resultado no primeiro valor</td>
+</tr>
+<tr>
+<td id="mul-float/2addr" translate="no">mul-float/2addr</td>
+<td>Multiplica dois valores de ponto flutuante e armazen</td>
+<tr>
+<td id="div-float/2addr" translate="no">div-float/2addr</td>
+<td>Divide dois valores de ponto flutuante e armazena o resultado no primeiro operando</td>
+</tr>
+
+<tr>
+<td id="rem-float/2addr" translate="no">rem-float/2addr</td>
+<td>Calcula o resto da divisão de dois valores de ponto flutuante e armazena o resultado no primeiro operando</td>
+</tr>
+
+<tr>
+<td id="add-double/2addr" translate="no">add-double/2addr</td>
+<td>Soma dois valores de dupla precisão e armazena o resultado no primeiro operando</td>
+</tr>
+
+<tr>
+<td id="sub-double/2addr" translate="no">sub-double/2addr</td>
+<td>Subtrai dois valores de dupla precisão e armazena o resultado no primeiro operando</td>
+</tr>
+
+<tr>
+<td id="mul-double/2addr" translate="no">mul-double/2addr</td>
+<td>Multiplica dois valores de dupla precisão e armazena o resultado no primeiro operando</td>
+</tr>
+
+<tr>
+<td id="div-double/2addr" translate="no">div-double/2addr</td>
+<td>Divide dois valores de dupla precisão e armazena o resultado no primeiro operando</td>
+</tr>
+
+<tr>
+<td id="rem-double/2addr" translate="no">rem-double/2addr</td>
+<td>Calcula o resto da divisão de dois valores de dupla precisão e armazena o resultado no primeiro operando</td>
+</tr>
+
+<tr>
+<td id="goto/16" translate="no">goto/16</td>
+<td>Pula para uma instrução específica no programa</td>
+</tr>
+
+<tr>
+<td id="sget" translate="no">sget</td>
+<td>Obtém o valor de um campo estático</td>
+</tr>
+
+<tr>
+<td id="sget-wide" translate="no">sget-wide</td>
+<td>Obtém o valor de um campo estático de dupla precisão</td>
+</tr>
+
+<tr>
+<td id="sget-object" translate="no">sget-object</td>
+<td>Obtém o valor de um campo estático do tipo objeto</td>
+</tr>
+
+<tr>
+<td id="sget-boolean" translate="no">sget-boolean</td>
+<td>Obtém o valor de um campo estático do tipo booleano</td>
+</tr>
+
+<tr>
+<td id="sget-byte" translate="no">sget-byte</td>
+<td>Obtém o valor de um campo estático do tipo byte</td>
+</tr>
+
+<tr>
+<td id="sget-char" translate="no">sget-char</td>
+<td>Obtém o valor de um campo estático do tipo caractere</td>
+</tr>
+
+<tr>
+<td id="sget-short" translate="no">sget-short</td>
+<td>Obtém o valor de um campo estático do tipo short</td>
+</tr>
+
+<tr>
+<td id="sput" translate="no">sput</td>
+<td>Atribui um valor a um campo estático</td>
+</tr>
+
+<tr>
+<td id="sput-wide" translate="no">sput-wide</td>
+<td>Atribui um valor de dupla precisão a um campo estático</td>
+</tr>
+
+<tr>
+<td id="sput-object" translate="no">sput-object</td>
+<td>Atribui um valor de objeto a um campo estático</td>
+</tr>
+
+<tr>
+<td id="sput-boolean" translate="no">sput-boolean</td>
+<td>Atribui um valor booleano a um campo estático</td>
+</tr>
+
+<tr>
+<td id="sput-byte" translate="no">sput-byte</td>
+<td>Atribui um valor byte a um campo estático</td>
+</tr>
+
+<tr>
+<td id="sput-char" translate="no">sput-char</td>
+<td>Atribui um valor caractere a um campo estático</td>
+</tr>
+
+<tr>
+<td id="sput-short" translate="no">sput-short</td>
+<td>Atribui um valor short a um campo estático</td>
+</tr>
+
+<tr>
+<td id="const-string" translate="no">const-string</td>
+<td>Cria uma nova instância de uma string com o valor especificado</td>
+</tr>
+
+<tr>
+<td id="check-cast" translate="no">check-cast</td>
+<td>Verifica se um objeto é de um determinado tipo</td>
+</tr>
+
+<tr>
+<td id="new-instance" translate="no">new-instance</td>
+<td>Cria uma nova instância de uma classe</td>
+</tr>
+
+<tr>
+<td id="const-class" translate="no">const-class</td>
+<td>Obtém a referência para a classe especificada</td>
+</tr>
+
+<tr>
+<td id="const/high16" translate="no">const/high16</td>
+<td>Cria uma constante de inteiro de 16 bits com os 16 bits mais significativos especificados</td>
+</tr>
+
+<tr>
+<td id="const-wide/high16" translate="no">const-wide/high16</td>
+<td>Cria uma constante de dupla precisão de 16 bits com os 16 bits mais significativos especificados</td>
+</tr>
+
+<tr>
+<td id="const/16" translate="no">const/16</td>
+<td>Cria uma constante de inteiro de 16 bits com o valor especificado</td>
+</tr>
+
+<tr>
+<td id="const-wide/16" translate="no">const-wide/16</td>
+<td>Cria uma constante de dupla precisão de 16 bits com o valor especificado</td>
+</tr>
+
+<tr>
+<td id="if-eqz" translate="no">if-eqz</td>
+<td>Compara um valor com zero e pula para uma instrução específica se for igual a zero</td>
+</tr>
+
+<tr>
+<td id="if-nez" translate="no">if-nez</td>
+<td>Compara um valor com zero e pula para uma instrução específica se for diferente de zero</td>
+</tr>
+
+<tr>
+<td id="if-ltz" translate="no">if-ltz</td>
+<td>Compara um valor com zero e pula para uma instrução específica se for menor que zero</td>
+</tr>
+
+<tr>
+<td id="if-gez" translate="no">if-gez</td>
+<td>Compara um valor com zero e pula para uma instrução específica se for maior ou igual a zero</td>
+</tr>
+
+<tr>
+<td id="if-gtz" translate="no">if-gtz</td>
+<td>Compara um valor com zero e pula para uma instrução específica se for maior que zero</td>
+</tr>
+
+<tr>
+<td id="if-lez" translate="no">if-lez</td>
+<td>Compara um valor com zero e pula para uma instrução específica se for menor ou igual a zero</td>
+</tr>
+
+<tr>
+<td id="add-int/lit8" translate="no">add-int/lit8</td>
+<td>Soma um valor inteiro de 8 bits a um valor inteiro</td>
+</tr>
+
+<tr>
+<td id="rsub-int/lit8" translate="no">rsub-int/lit8</td>
+<td>Subtrai um valor inteiro de 8 bits de um valor inteiro</td>
+</tr>
+
+<tr>
+<td id="mul-int/lit8" translate="no">mul-int/lit8</td>
+<td>Multiplica um valor inteiro por um valor inteiro de 8 bits</td>
+</tr>
+
+<tr>
+<td id="div-int/lit8" translate="no">div-int/lit8</td>
+<td>Divide um valor inteiro por um valor inteiro de 8 bits</td>
+</tr>
+
+<tr>
+<td id="rem-int/lit8" translate="no">rem-int/lit8</td>
+<td>Calcula o resto da divisão de um valor inteiro por um valor inteiro de 8 bits</td>
+</tr>
+
+<tr>
+<td id="and-int/lit8" translate="no">and-int/lit8</td>
+<td>Faz uma operação de AND bit a bit entre um valor inteiro e um valor inteiro de 8 bits</td>
+</tr>
+<tr>
+<td id="xor-int/lit8" translate="no">xor-int/lit8</td>
+<td>Executa uma operação de XOR bit a bit entre um registrador e um valor literal de 8 bits</td>
+</tr>
+<tr>
+<td id="shl-int/lit8" translate="no">shl-int/lit8</td>
+<td>Executa um deslocamento à esquerda bit a bit entre um registrador e um valor literal de 8 bits</td>
+</tr>
+<tr>
+<td id="shr-int/lit8" translate="no">shr-int/lit8</td>
+<td>Executa um deslocamento à direita com sinal bit a bit entre um registrador e um valor literal de 8 bits</td>
+</tr>
+<tr>
+<td id="ushr-int/lit8" translate="no">ushr-int/lit8</td>
+<td>Executa um deslocamento à direita sem sinal bit a bit entre um registrador e um valor literal de 8 bits</td>
+</tr>
+<tr>
+<td id="iget" translate="no">iget</td>
+<td>Obtém o valor de um campo de instância de um objeto</td>
+</tr>
+<tr>
+<td id="iput" translate="no">iput</td>
+<td>Define o valor de um campo de instância em um objeto</td>
+</tr>
+<tr>
+<td id="instance-of" translate="no">instance-of</td>
+<td>Verifica se um objeto é uma instância de uma classe específica</td>
+</tr>
+<tr>
+<td id="new-array" translate="no">new-array</td>
+<td>Cria um novo objeto de array</td>
+</tr>
+<tr>
+<td id="add-int/lit16" translate="no">add-int/lit16</td>
+<td>Soma um valor de registrador a um valor literal de 16 bits</td>
+</tr>
+<tr>
+<td id="mul-int/lit16" translate="no">mul-int/lit16</td>
+<td>Multiplica um valor de registrador por um valor literal de 16 bits</td>
+</tr>
+<tr>
+<td id="div-int/lit16" translate="no">div-int/lit16</td>
+<td>Divide um valor de registrador por um valor literal de 16 bits</td>
+</tr>
+<tr>
+<td id="rem-int/lit16" translate="no">rem-int/lit16</td>
+<td>Calcula o resto da divisão de um valor de registrador por um valor literal de 16 bits</td>
+</tr>
+<tr>
+<td id="and-int/lit16" translate="no">and-int/lit16</td>
+<td>Executa uma operação AND bit a bit entre um valor de registrador inteiro e um valor literal de 16 bits</td>
+</tr>
+<tr>
+<td id="or-int/lit16" translate="no">or-int/lit16</td>
+<td>Executa uma operação OR bit a bit entre um valor de registrador inteiro e um valor literal de 16 bits</td>
+</tr>
+<tr>
+<td id="if-eq" translate="no">if-eq</td>
+<td>Desvia para uma instrução de destino se os valores de dois registradores forem iguais</td>
+</tr>
+<tr>
+<td id="move/from16" translate="no">move/from16</td>
+<td>Move um valor de um registrador para outro, usando um índice de registrador de 16 bits</td>
+</tr>
+<tr>
+<td id="move-wide/from16" translate="no">move-wide/from16</td>
+<td>Esta instrução é utilizada para mover um valor de 64 bits de um registrador de 16 bits para outro registrador. É comumente utilizada em linguagens de programação que suportam números grandes ou valores de ponto flutuante de dupla precisão.</td>
+</tr>
+<tr>
+<td id="move-object/from16" translate="no">move-object/from16</td>
+<td>Move uma referência de objeto de um registro para outro</td>
+</tr>
+<tr>
+<td id="cmpl-float" translate="no">cmpl-float</td>
+<td>Compara dois floats e retorna -1, 0 ou 1 dependendo do resultado</td>
+</tr>
+<tr>
+<td id="cmpg-float" translate="no">cmpg-float</td>
+<td>Compara dois floats e retorna -1, 0 ou 1 dependendo do resultado</td>
+</tr>
+<tr>
+<td id="cmpl-double" translate="no">cmpl-double</td>
+<td>Compara dois doubles e retorna -1, 0 ou 1 dependendo do resultado</td>
+</tr>
+<tr>
+<td id="cmpg-double" translate="no">cmpg-double</td>
+<td>Compara dois doubles e retorna -1, 0 ou 1 dependendo do resultado</td>
+</tr>
+<tr>
+<td id="cmp-long" translate="no">cmp-long</td>
+<td>Compara dois longs e retorna -1, 0 ou 1 dependendo do resultado</td>
+</tr>
+<tr>
+<td id="aget" translate="no">aget</td>
+<td>Recupera um elemento de um array</td>
+</tr>
+<tr>
+<td id="aget-wide" translate="no">aget-wide</td>
+<td>Recupera um elemento amplo (long ou double) de um array</td>
+</tr>
+<tr>
+<td id="aget-object" translate="no">aget-object</td>
+<td>Recupera uma referência de objeto de um array</td>
+</tr>
+<tr>
+<td id="aget-boolean" translate="no">aget-boolean</td>
+<td>Recupera um valor booleano de um array</td>
+</tr>
+<tr>
+<td id="aget-byte" translate="no">aget-byte</td>
+<td>Recupera um valor byte de um array</td>
+</tr>
+<tr>
+<td id="aget-char" translate="no">aget-char</td>
+<td>Recupera um valor char de um array</td>
+</tr>
+<tr>
+<td id="aget-short" translate="no">aget-short</td>
+<td>Recupera um valor short de um array</td>
+</tr>
+<tr>
+<td id="aput" translate="no">aput</td>
+<td>Armazena um valor em um elemento de array</td>
+</tr>
+<tr>
+<td id="aput-wide" translate="no">aput-wide</td>
+<td>Armazena um valor amplo (long ou double) em um elemento de array</td>
+</tr>
+<tr>
+<td id="aput-object" translate="no">aput-object</td>
+<td>Armazena uma referência de objeto em um elemento de array</td>
+</tr>
+<tr>
+<td id="aput-boolean" translate="no">aput-boolean</td>
+<td>Armazena um valor booleano em um elemento de array</td>
+</tr>
+<tr>
+<td id="aput-byte" translate="no">aput-byte</td>
+<td>Armazena um valor byte em um elemento de array</td>
+</tr>
+<tr>
+<td id="aput-char" translate="no">aput-char</td>
+<td>Armazena um valor char em um elemento de array</td>
+</tr>
+<tr>
+<td id="aput-short" translate="no">aput-short</td>
+<td>Armazena um valor short em um elemento de array</td>
+</tr>
+<tr>
+<td id="add-int" translate="no">add-int</td>
+<td>Adiciona dois inteiros</td>
+</tr>
+<tr>
+<td id="sub-int" translate="no">sub-int</td>
+<td>Subtrai um inteiro de outro</td>
+</tr>
+<tr>
+<td id="mul-int" translate="no">mul-int</td>
+<td>Multiplica dois inteiros</td>
+</tr>
+<tr>
+<td id="div-int" translate="no">div-int</td>
+<td>Divide um inteiro por outro</td>
+</tr>
+<tr>
+<td id="rem-int" translate="no">rem-int</td>
+<td>Calcula o resto da divisão de um inteiro por outro</td>
+</tr>
+<tr>
+<td id="and-int" translate="no">and-int</td>
+<td>Operação lógica AND bit a bit de dois inteiros</td>
+</tr>
+<tr>
+<td id="or-int" translate="no">or-int</td>
+<td>Operação lógica OR bit a bit de dois inteiros</td>
+</tr>
+<tr>
+<td id="xor-int" translate="no">xor-int</td>
+<td>Operação lógica XOR bit a bit de dois inteiros</td>
+</tr>
+<tr>
+<td id="shl-int" translate="no">shl-int</td>
+<td>Desloca os bits à esquerda de um inteiro</td>
+</tr>
+<tr>
+<td id="shr-int" translate="no">shr-int</td>
+<td>Desloca os bits à direita de um inteiro com sinal</td>
+</tr>
+<tr>
+<td id="ushr-int" translate="no">ushr-int</td>
+<td>Desloca os bits à direita de um inteiro sem sinal</td>
+</tr>
+<tr>
+<td id="add-long" translate="no">add-long</td>
+<td>Adiciona dois longs</td>
+</tr>
+<tr>
+<td id="sub-long" translate="no">sub-long</td>
+<td>Subtrai um long de outro</td>
+</tr>
+<tr>
+<td id="mul-long" translate="no">mul-long</td>
+<td>Multiplica dois longs</td>
+</tr>
+<tr>
+<td id="div-long" translate="no">div-long</td>
+<td>Divide um long por outro</td>
+</tr>
+<tr>
+<td id="rem-long" translate="no">rem-long</td>
+<td>Calcula o resto da divisão de um long por outro</td>
+</tr>
+<tr>
+<td id="and-long" translate="no">and-long</td>
+<td>Operação lógica AND bit a bit de dois longs</td>
+</tr>
+<tr>
+<td id="or-long" translate="no">or-long</td>
+<td>Operação lógica OR bit a bit de dois longs</td>
+</tr>
+<tr>
+<td id="xor-long" translate="no">xor-long</td>
+<td>Operação lógica XOR bit a bit de dois longs</td>
+</tr>
+<tr>
+<td id="shl-long" translate="no">shl-long</td>
+<td>Desloca os bits à esquerda de um long</td>
+</tr>
+<tr>
+<td id="shr-long" translate="no">shr-long</td>
+<td>Desloca os bits à direita de um long com sinal</td>
+</tr>
+<tr>
+<td id="ushr-long" translate="no">ushr-long</td>
+<td>Desloca os bits à direita de um long sem sinal</td>
+</tr>
+<tr>
+<td id="add-float" translate="no">add-float</td>
+<td>Adiciona dois floats</td>
+</tr>
+<tr>
+<td id="sub-float" translate="no">sub-float</td>
+<td>Subtrai um float de outro</td>
+</tr>
+<tr>
+<td id="mul-float" translate="no">mul-float</td>
+<td>Multiplica dois floats</td>
+</tr>
+<tr>
+<td id="div-float" translate="no">div-float</td>
+<td>Divide um float por outro</td>
+</tr>
+<tr>
+<td id="rem-float" translate="no">rem-float</td>
+<td>Calcula o resto da divisão de um float por outro</td>
+</tr>
+<tr>
+<td id="add-double" translate="no">add-double</td>
+<td>Adiciona dois doubles</td>
+</tr>
+<tr>
+<td id="sub-double" translate="no">sub-double</td>
+<td>Subtrai um double de outro</td>
+</tr>
+<tr>
+<td id="mul-double" translate="no">mul-double</td>
+<td>Multiplica dois doubles</td>
+</tr>
+<tr>
+<td id="div-double" translate="no">div-double</td>
+<td>Divide um double por outro</td>
+</tr>
+<tr>
+<td id="rem-double" translate="no">rem-double</td>
+<td>Calcula o resto da divisão de um double por outro</td>
+</tr>
+<tr>
+<td id="goto/32" translate="no">goto/32</td>
+<td>Salta incondicionalmente para uma instrução de destino</td>
+</tr>
+<tr>
+<td id="const-string/jumbo" translate="no">const-string/jumbo</td>
+<td>Carrega uma constante de string na pilha</td>
+</tr>
+<tr>
+<td id="const" translate="no">const</td>
+<td>Carrega um valor constante pequeno na pilha</td>
+</tr>
+<tr>
+<td id="const-wide/32" translate="no">const-wide/32</td>
+<td>Carrega um valor constante amplo (long ou double) na pilha</td>
+</tr>
+<tr>
+<td id="fill-array-data" translate="no">fill-array-data</td>
+<td>Preenche um array com dados</td>
+</tr>
+<tr>
+<td id="packed-switch" translate="no">packed-switch</td>
+<td>Declaração de switch com valores consecutivos</td>
+</tr>
+<tr>
+<td id="sparse-switch" translate="no">sparse-switch</td>
+<td>Declaração de switch com valores não consecutivos</td>
+</tr>
+<tr>
+<td id="move/16" translate="no">move/16</td>
+<td>Move um valor short de um registro para outro</td>
+</tr>
+<tr>
+<td id="move-wide/16" translate="no">move-wide/16</td>
+<td>Move um valor amplo (long ou double) de um registro para outro</td>
+</tr>
+<tr>
+<td id="move-object/16" translate="no">move-object/16</td>
+<td>Move uma referência de objeto de um registro para outro</td>
+</tr>
+<tr>
+<td id="invoke-virtual" translate="no">invoke-virtual</td>
+<td>Invoca um método virtual</td>
+</tr>
+<tr>
+<td id="invoke-super" translate="no">invoke-super</td>
+<td>Invoca um método super</td>
+</tr>
+<tr>
+<td id="invoke-direct" translate="no">invoke-direct</td>
+<td>Invoca um método direto</td>
+</tr>
+<tr>
+<td id="invoke-static" translate="no">invoke-static</td>
+<td>Invoca um método estático</td>
+</tr>
+<tr>
+<td id="invoke-interface" translate="no">invoke-interface</td>
+<td>Invoca um método de interface</td>
+</tr>
+<tr>
+<td id="filled-new-array" translate="no">filled-new-array</td>
+<td>Cria um novo array e o inicializa com valores</td>
+</tr>
+<tr>
+<td id="invoke-direct-empty" translate="no">invoke-direct-empty</td>
+<td>Invoca um método direto sem argumentos e sem valor de retorno</td>
+</tr>
+<tr>
+<td id="execute-inline" translate="no">execute-inline</td>
+<td>Executa um método inline</td>
+</tr>
+<tr>
+<td id="invoke-virtual-quick" translate="no">invoke-virtual-quick</td>
+<td>Invoca um método virtual usando polimorfismo rápido</td>
+</tr>
+<tr>
+<td id="invoke-super-quick" translate="no">invoke-super-quick</td>
+<td>Invoca um método super usando polimorfismo rápido</td>
+</tr>
+<tr>
+<td id="invoke-virtual/range" translate="no">invoke-virtual/range</td>
+<td>Invoca um intervalo de métodos virtuais</td>
+</tr>
+<tr>
+<td id="invoke-super/range" translate="no">invoke-super/range</td>
+<td>Invoca um intervalo de métodos super</td>
+</tr>
+<tr>
+<td id="invoke-direct/range" translate="no">invoke-direct/range</td>
+<td>Invoca um intervalo de métodos diretos</td>
+</tr>
+<tr>
+<td id="invoke-static/range" translate="no">invoke-static/range</td>
+<td>Invoca um intervalo de métodos estáticos</td>
+</tr>
+<tr>
+<td id="invoke-interface/range" translate="no">invoke-interface/range</td>
+<td>Invoca um intervalo de métodos de interface</td>
+</tr>
+<tr>
+<td id="filled-new-array/range" translate="no">filled-new-array/range</td>
+<td>Cria um novo array e o inicializa com valores de um intervalo de registros</td>
+</tr>
+<tr>
+<td id="invoke-virtual-quick/range" translate="no">invoke-virtual-quick/range</td>
+<td>Invoca um intervalo de métodos virtuais usando polimorfismo rápido</td>
+</tr>
+<tr>
+<td id="invoke-super-quick/range" translate="no">invoke-super-quick/range</td>
+<td>Invoca um intervalo de métodos super usando polimorfismo rápido</td>
+</tr>
+<tr>
+<td id="const-wide" translate="no">const-wide</td>
+<td>Carrega um valor constante amplo (long ou double) na pilha</td>
+</tr>
+</table>
+
+<script>
+function goBack() {
+  history.back();
+}
+</script>
+
+</body>
+</html>
