@@ -248,12 +248,12 @@ i {
 
 /* Classe dark .dropbtn::before - estilo para o ícone do tema escuro antes do conteúdo */
 .dark .dropbtn::before {
-  content: url("light.webp");
+  content: url("png/light.webp");
 }
 
 /* Classe dark .theme-icon::before - estilo para o ícone do tema escuro antes do conteúdo */
 .dark .theme-icon::before {
-  content: url("light.webp");
+  content: url("png/light.webp");
 }
 
 /* Classe img-3 - estilo dark para a imagem */
@@ -399,7 +399,7 @@ h2 {
 
 /* Classe theme-icon::before - estilo para o ícone do tema antes do conteúdo */
 .theme-icon::before {
-  content: url("dark.webp");
+  content: url("png/dark.webp");
 }
 
 header {
@@ -414,29 +414,29 @@ header {
 
 /* Classe dark .dropbtn::before - estilo para o ícone do tema escuro antes do conteúdo */
 .dark .dropbtn::before {
-  content: url("fonte_light.webp");
+  content: url("png/fonte_light.webp");
   font-size: 15px;
 }
 
 /* Classe dropbtn::before - estilo para o ícone do tema antes do conteúdo */
 .dropbtn::before {
-  content: url("fonte_dark.webp");
+  content: url("png/fonte_dark.webp");
   font-size: 15px;
 }
 
 /* Classe dark .theme-icon::before - estilo para o ícone do tema escuro antes do conteúdo */
 .dark .theme-icon::before {
-  content: url("light.webp");
+  content: url("png/light.webp");
 }
 
 /* Classe dark .dropbtn::before - estilo para o ícone do tema escuro antes do conteúdo */
 .dark .dropbtn::before {
-  content: url("light.webp");
+  content: url("png/light.webp");
 }
 
 /* Classe dark .theme-icon::before - estilo para o ícone do tema escuro antes do conteúdo */
 .dark .theme-icon::before {
-  content: url("light.webp");
+  content: url("png/light.webp");
 }
 
 .dark header {
@@ -477,18 +477,18 @@ header {
 
 /* Classe theme-icon::before - estilo para o ícone do tema antes do conteúdo */
 .theme-icon::before {
-  content: url("dark.webp");
+  content: url("png/dark.webp");
   font-size: 15px;
 }
 
 /* Classe dark .dropbtn::before - estilo para o ícone do tema escuro antes do conteúdo */
 .dark .dropbtn::before {
-  content: url("fonte_light.webp");
+  content: url("png/fonte_light.webp");
   font-size: 15px;
 }
 
 .dark .theme-icon::before {
-  content: url("light.webp");
+  content: url("png/light.webp");
 }
 
 .dropdown-content {
@@ -547,7 +547,7 @@ img {
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
-  background: url(lupaicon_r0.png) no-repeat center;
+  content: url("png/lupaicon_r0.png");
   background-size: 100%;
   cursor: none;
 }
